@@ -17,13 +17,9 @@ public class ComicRepository {
     }
 
     public void addComic(Comic comic) {
-        if (comic.getTitle() == null || comic.getAuthor() == null) {
-            throw new IllegalArgumentException("Название и автор обязательны!");
-        }
         comic.setId(nextId);
         comics.add(comic);
         nextId++;
-        System.out.println("Комикс добавлен: " + comic.getTitle());
     }
 
     //получить все комиксы
