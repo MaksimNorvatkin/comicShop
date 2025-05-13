@@ -39,5 +39,13 @@ public class ComicRepositoryTest {
         for (Comic c : allComics) {
             System.out.println(c.getId() + ": " + c.getTitle());
         }
+        System.out.println("Перед удалением: " + repository.getAllComics().size()); // 2
+        // Проверяем поиск
+        List<Comic> found = repository.findByTitle("бэтмен"); // Проверяем регистр
+        System.out.println("Найден: " + found.get(0).getTitle()); // Бэтмен
+
+        // Проверяем удаление
+        repository.deleteComic(1L);
+        System.out.println("После удаления: " + repository.getAllComics().size()); // 1
     }
-}
+    }
