@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;
 
+
 public class Comic {
     private Long id;
     private String title;
@@ -14,15 +15,20 @@ public class Comic {
     private int year;
     private double costPrice;
     private double sellingPrice;
+
     @JsonProperty("isSequel")
-    private boolean sequel;  // Продолжение другой серии?
+    private boolean isSequel;
+
     @JsonProperty("isOnSale")
-    private boolean onSale; // Участвует в акции
-    private double discount; // Скидка (например, 10 = 10%)
+    private boolean isOnSale;
+
+    private double discount;
+
     @JsonProperty("isReserved")
-    private boolean reserved; // Отложен для покупателя
-    private String reservedBy; // Логин покупателя
-    private int salesCount; // Количество продаж (для статистики)
+    private boolean isReserved;
+
+    private String reservedBy;
+    private int salesCount;
 
     // Конструктор по умолчанию (обязателен для Jackson)
     public Comic() {}
@@ -39,10 +45,9 @@ public class Comic {
         this.year = year;
         this.costPrice = costPrice;
         this.sellingPrice = sellingPrice;
-        this.sequel= false; // По умолчанию
-        this.onSale = false;
+        this.isOnSale = false;
         this.discount = 0.0;
-        this.reserved = false;
+        this.isReserved = false;
         this.reservedBy = null;
         this.salesCount = 0;
     }
@@ -121,19 +126,19 @@ public class Comic {
     }
 
     public boolean isSequel() {
-        return sequel;
+        return isOnSale;
     }
 
     public void setSequel(boolean sequel) {
-        sequel = sequel;
+        isOnSale = sequel;
     }
 
     public boolean isOnSale() {
-        return onSale;
+        return isOnSale;
     }
 
     public void setOnSale(boolean onSale) {
-        onSale = onSale;
+        isOnSale = onSale;
     }
 
     public double getDiscount() {
@@ -145,11 +150,11 @@ public class Comic {
     }
 
     public boolean isReserved() {
-        return reserved;
+        return isReserved;
     }
 
     public void setReserved(boolean reserved) {
-        reserved = reserved;
+        isReserved = reserved;
     }
 
     public String getReservedBy() {
