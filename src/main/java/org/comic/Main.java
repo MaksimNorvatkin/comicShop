@@ -1,7 +1,10 @@
 package org.comic;
 
 public class Main {
+
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        ItemController controller = ControllerFactory.createController();
+        ConsoleUI consoleUI = new ConsoleUI(controller);
+        consoleUI.run();
     }
 }
