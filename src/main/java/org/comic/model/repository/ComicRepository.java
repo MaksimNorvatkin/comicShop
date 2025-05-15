@@ -128,8 +128,5 @@ private List<Comic> loadFromFile() {
             existing.setSalesCount(updatedComic.getSalesCount());
             saveToFile();
         }
-
-
-
     }
 }

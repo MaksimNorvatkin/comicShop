@@ -16,7 +16,7 @@ public class ComicRepositoryFileTest {
         repository.addComic(spiderMan);
 
         // 3. Проверяем поиск
-        List<Comic> found = repository.findByTitle("человек-паук");
+        List<Comic> found = repository.findByTitle("человек-паук 2");
         System.out.println("Найден: " + found.get(0).getTitle());  // Человек-паук
 
 //        // 4. Удаляем комикс
