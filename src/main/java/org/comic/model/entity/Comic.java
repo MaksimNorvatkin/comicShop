@@ -1,5 +1,7 @@
 package org.comic.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDate;
 
 public class Comic {
@@ -12,12 +14,18 @@ public class Comic {
     private int year;
     private double costPrice;
     private double sellingPrice;
-    private boolean isSequel; // Продолжение другой серии?
-    private boolean isOnSale; // Участвует в акции
+    @JsonProperty("isSequel")
+    private boolean sequel;  // Продолжение другой серии?
+    @JsonProperty("isOnSale")
+    private boolean onSale; // Участвует в акции
     private double discount; // Скидка (например, 10 = 10%)
-    private boolean isReserved; // Отложен для покупателя
+    @JsonProperty("isReserved")
+    private boolean reserved; // Отложен для покупателя
     private String reservedBy; // Логин покупателя
     private int salesCount; // Количество продаж (для статистики)
+
+    // Конструктор по умолчанию (обязателен для Jackson)
+    public Comic() {}
 
     public Comic(Long id, String title, String author, String publisher,
                  int pageCount, String genre, int year,
@@ -31,10 +39,10 @@ public class Comic {
         this.year = year;
         this.costPrice = costPrice;
         this.sellingPrice = sellingPrice;
-        this.isSequel = false; // По умолчанию
-        this.isOnSale = false;
+        this.sequel= false; // По умолчанию
+        this.onSale = false;
         this.discount = 0.0;
-        this.isReserved = false;
+        this.reserved = false;
         this.reservedBy = null;
         this.salesCount = 0;
     }
@@ -113,19 +121,19 @@ public class Comic {
     }
 
     public boolean isSequel() {
-        return isSequel;
+        return sequel;
     }
 
     public void setSequel(boolean sequel) {
-        isSequel = sequel;
+        sequel = sequel;
     }
 
     public boolean isOnSale() {
-        return isOnSale;
+        return onSale;
     }
 
     public void setOnSale(boolean onSale) {
-        isOnSale = onSale;
+        onSale = onSale;
     }
 
     public double getDiscount() {
@@ -137,11 +145,11 @@ public class Comic {
     }
 
     public boolean isReserved() {
-        return isReserved;
+        return reserved;
     }
 
     public void setReserved(boolean reserved) {
-        isReserved = reserved;
+        reserved = reserved;
     }
 
     public String getReservedBy() {
